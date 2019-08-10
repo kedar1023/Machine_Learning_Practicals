@@ -1,0 +1,386 @@
+kedar1023@kedar:~/MITAOE/LAB_ML$ python
+Python 2.7.15+ (default, Nov 27 2018, 23:36:35) 
+[GCC 7.3.0] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pandas as ps
+>>> ps.read_csv('indian_team.csv')
+    sn        name  marks
+0    1       rahul     77
+1    2      CHAHAR     90
+2    3       Virat     95
+3    4          kl     70
+4    5      Rishbh     60
+5    6    MS DHONO     97
+6    7    Ravindra     89
+7    8  BUVNESHWAR     68
+8    9       Shami     82
+9   10      Bumrah     90
+10  11        Yuzi     70
+11  12     kuldeep     80
+>>> data2=ps.nrow()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'nrow'
+>>> data2=ps.nrows()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'nrows'
+>>> ps.nrows()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'nrows'
+>>> ps.nrows("indian_team.csv")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'nrows'
+>>> data=ps.read_csv('indian_team.csv')
+>>> data
+    sn        name  marks
+0    1       rahul     77
+1    2      CHAHAR     90
+2    3       Virat     95
+3    4          kl     70
+4    5      Rishbh     60
+5    6    MS DHONO     97
+6    7    Ravindra     89
+7    8  BUVNESHWAR     68
+8    9       Shami     82
+9   10      Bumrah     90
+10  11        Yuzi     70
+11  12     kuldeep     80
+>>> data.header()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/local/lib/python2.7/dist-packages/pandas/core/generic.py", line 5067, in __getattr__
+    return object.__getattribute__(self, name)
+AttributeError: 'DataFrame' object has no attribute 'header'
+>>> data.head()
+   sn    name  marks
+0   1   rahul     77
+1   2  CHAHAR     90
+2   3   Virat     95
+3   4      kl     70
+4   5  Rishbh     60
+>>> data.tail()
+    sn        name  marks
+7    8  BUVNESHWAR     68
+8    9       Shami     82
+9   10      Bumrah     90
+10  11        Yuzi     70
+11  12     kuldeep     80
+>>> data.tail(10)
+    sn        name  marks
+2    3       Virat     95
+3    4          kl     70
+4    5      Rishbh     60
+5    6    MS DHONO     97
+6    7    Ravindra     89
+7    8  BUVNESHWAR     68
+8    9       Shami     82
+9   10      Bumrah     90
+10  11        Yuzi     70
+11  12     kuldeep     80
+>>> clear()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'clear' is not defined
+>>> data.shape()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object is not callable
+>>> data.shape
+(12, 3)
+>>> r,c=data.shape
+>>> r
+12
+>>> c
+3
+>>> data.iloc[:,]
+    sn        name  marks
+0    1       rahul     77
+1    2      CHAHAR     90
+2    3       Virat     95
+3    4          kl     70
+4    5      Rishbh     60
+5    6    MS DHONO     97
+6    7    Ravindra     89
+7    8  BUVNESHWAR     68
+8    9       Shami     82
+9   10      Bumrah     90
+10  11        Yuzi     70
+11  12     kuldeep     80
+>>> data.iloc[1,1]
+'CHAHAR'
+>>> data.iloc[:,1]
+0          rahul
+1         CHAHAR
+2          Virat
+3             kl
+4         Rishbh
+5       MS DHONO
+6       Ravindra
+7     BUVNESHWAR
+8          Shami
+9         Bumrah
+10          Yuzi
+11       kuldeep
+Name: name, dtype: object
+>>> type(data.iloc[:,])
+<class 'pandas.core.frame.DataFrame'>
+>>> type(data.iloc[])
+  File "<stdin>", line 1
+    type(data.iloc[])
+                   ^
+SyntaxError: invalid syntax
+>>> type(data.iloc[0,:])
+<class 'pandas.core.series.Series'>
+>>> data.iloc[0,:]
+sn           1
+name     rahul
+marks       77
+Name: 0, dtype: object
+>>> data.iloc[5:11,:]
+    sn        name  marks
+5    6    MS DHONO     97
+6    7    Ravindra     89
+7    8  BUVNESHWAR     68
+8    9       Shami     82
+9   10      Bumrah     90
+10  11        Yuzi     70
+>>> data.iloc[5:11,1:2]
+          name
+5     MS DHONO
+6     Ravindra
+7   BUVNESHWAR
+8        Shami
+9       Bumrah
+10        Yuzi
+>>> data.columns
+Index([u'sn', u'name', u'marks'], dtype='object')
+>>> dtype(data.marks)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'dtype' is not defined
+>>> type(data.marks)
+<class 'pandas.core.series.Series'>
+>>> data['marks']
+0     77
+1     90
+2     95
+3     70
+4     60
+5     97
+6     89
+7     68
+8     82
+9     90
+10    70
+11    80
+Name: marks, dtype: int64
+>>> data.marks
+0     77
+1     90
+2     95
+3     70
+4     60
+5     97
+6     89
+7     68
+8     82
+9     90
+10    70
+11    80
+Name: marks, dtype: int64
+>>> data.marks%2
+0     1
+1     0
+2     1
+3     0
+4     0
+5     1
+6     1
+7     0
+8     0
+9     0
+10    0
+11    0
+Name: marks, dtype: int64
+>>> data['mod']=data.marks%2
+>>> data
+    sn        name  marks  mod
+0    1       rahul     77    1
+1    2      CHAHAR     90    0
+2    3       Virat     95    1
+3    4          kl     70    0
+4    5      Rishbh     60    0
+5    6    MS DHONO     97    1
+6    7    Ravindra     89    1
+7    8  BUVNESHWAR     68    0
+8    9       Shami     82    0
+9   10      Bumrah     90    0
+10  11        Yuzi     70    0
+11  12     kuldeep     80    0
+>>> data[['name','mod']]
+          name  mod
+0        rahul    1
+1       CHAHAR    0
+2        Virat    1
+3           kl    0
+4       Rishbh    0
+5     MS DHONO    1
+6     Ravindra    1
+7   BUVNESHWAR    0
+8        Shami    0
+9       Bumrah    0
+10        Yuzi    0
+11     kuldeep    0
+>>> data2=data[['name','mod']]
+>>> data2
+          name  mod
+0        rahul    1
+1       CHAHAR    0
+2        Virat    1
+3           kl    0
+4       Rishbh    0
+5     MS DHONO    1
+6     Ravindra    1
+7   BUVNESHWAR    0
+8        Shami    0
+9       Bumrah    0
+10        Yuzi    0
+11     kuldeep    0
+>>> data.rename(columns:{'mod':'mode'})
+  File "<stdin>", line 1
+    data.rename(columns:{'mod':'mode'})
+                       ^
+SyntaxError: invalid syntax
+>>> data.rename(columns={'mod':'mode'})
+    sn        name  marks  mode
+0    1       rahul     77     1
+1    2      CHAHAR     90     0
+2    3       Virat     95     1
+3    4          kl     70     0
+4    5      Rishbh     60     0
+5    6    MS DHONO     97     1
+6    7    Ravindra     89     1
+7    8  BUVNESHWAR     68     0
+8    9       Shami     82     0
+9   10      Bumrah     90     0
+10  11        Yuzi     70     0
+11  12     kuldeep     80     0
+>>> data.rename(columns={'mode':'mode1'})
+    sn        name  marks  mod
+0    1       rahul     77    1
+1    2      CHAHAR     90    0
+2    3       Virat     95    1
+3    4          kl     70    0
+4    5      Rishbh     60    0
+5    6    MS DHONO     97    1
+6    7    Ravindra     89    1
+7    8  BUVNESHWAR     68    0
+8    9       Shami     82    0
+9   10      Bumrah     90    0
+10  11        Yuzi     70    0
+11  12     kuldeep     80    0
+>>> data=data.rename(columns={'mode':'mode1'})
+>>> data
+    sn        name  marks  mod
+0    1       rahul     77    1
+1    2      CHAHAR     90    0
+2    3       Virat     95    1
+3    4          kl     70    0
+4    5      Rishbh     60    0
+5    6    MS DHONO     97    1
+6    7    Ravindra     89    1
+7    8  BUVNESHWAR     68    0
+8    9       Shami     82    0
+9   10      Bumrah     90    0
+10  11        Yuzi     70    0
+11  12     kuldeep     80    0
+>>> data
+    sn        name  marks  mod
+0    1       rahul     77    1
+1    2      CHAHAR     90    0
+2    3       Virat     95    1
+3    4          kl     70    0
+4    5      Rishbh     60    0
+5    6    MS DHONO     97    1
+6    7    Ravindra     89    1
+7    8  BUVNESHWAR     68    0
+8    9       Shami     82    0
+9   10      Bumrah     90    0
+10  11        Yuzi     70    0
+11  12     kuldeep     80    0
+>>> data=data.rename(columns={'mod':'mode1'})
+>>> data
+    sn        name  marks  mode1
+0    1       rahul     77      1
+1    2      CHAHAR     90      0
+2    3       Virat     95      1
+3    4          kl     70      0
+4    5      Rishbh     60      0
+5    6    MS DHONO     97      1
+6    7    Ravindra     89      1
+7    8  BUVNESHWAR     68      0
+8    9       Shami     82      0
+9   10      Bumrah     90      0
+10  11        Yuzi     70      0
+11  12     kuldeep     80      0
+>>> data.mode1 == 1
+0      True
+1     False
+2      True
+3     False
+4     False
+5      True
+6      True
+7     False
+8     False
+9     False
+10    False
+11    False
+Name: mode1, dtype: bool
+>>> data[data.mode1==1]
+   sn      name  marks  mode1
+0   1     rahul     77      1
+2   3     Virat     95      1
+5   6  MS DHONO     97      1
+6   7  Ravindra     89      1
+>>> data[data.name.str.find('a')]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/local/lib/python2.7/dist-packages/pandas/core/frame.py", line 2934, in __getitem__
+    raise_missing=True)
+  File "/usr/local/lib/python2.7/dist-packages/pandas/core/indexing.py", line 1354, in _convert_to_indexer
+    return self._get_listlike_indexer(obj, axis, **kwargs)[1]
+  File "/usr/local/lib/python2.7/dist-packages/pandas/core/indexing.py", line 1161, in _get_listlike_indexer
+    raise_missing=raise_missing)
+  File "/usr/local/lib/python2.7/dist-packages/pandas/core/indexing.py", line 1246, in _validate_read_indexer
+    key=key, axis=self.obj._get_axis_name(axis)))
+KeyError: u"None of [Int64Index([1, -1, 3, -1, -1, -1, 1, -1, 2, 4, -1, -1], dtype='int64')] are in the [columns]"
+>>> data[data.name.str.find('a')<0]
+    sn        name  marks  mode1
+1    2      CHAHAR     90      0
+3    4          kl     70      0
+4    5      Rishbh     60      0
+5    6    MS DHONO     97      1
+7    8  BUVNESHWAR     68      0
+10  11        Yuzi     70      0
+11  12     kuldeep     80      0
+>>> data.loc[:,'name']
+0          rahul
+1         CHAHAR
+2          Virat
+3             kl
+4         Rishbh
+5       MS DHONO
+6       Ravindra
+7     BUVNESHWAR
+8          Shami
+9         Bumrah
+10          Yuzi
+11       kuldeep
+Name: name, dtype: object
+>>> data.marks.mean()
+80.66666666666667
+
